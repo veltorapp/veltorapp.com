@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Returning to Veltor…</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #000;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+    }
+    .card {
+      max-width: 380px;
+      width: 100%;
+    }
+    .logo {
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
+      margin-bottom: 28px;
+      filter: drop-shadow(0 0 20px rgba(79,195,247,0.5));
+    }
+    .logo-fallback {
+      width: 72px; height: 72px;
+      background: rgba(79,195,247,0.1);
+      border: 1px solid rgba(79,195,247,0.3);
+      border-radius: 16px;
+      margin: 0 auto 28px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 22px; font-weight: 700;
+      color: #4FC3F7;
+    }
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+    p {
+      font-size: 14px;
+      color: #888;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+    .spinner {
+      width: 36px; height: 36px;
+      border: 2px solid rgba(79,195,247,0.15);
+      border-top-color: #4FC3F7;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 32px;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    .status {
+      font-size: 12px;
+      color: #555;
+      font-family: 'Inter', sans-serif;
+      margin-bottom: 24px;
+    }
+    .manual-btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background: #4FC3F7;
+      color: #000;
+      font-weight: 700;
+      font-size: 14px;
+      border-radius: 8px;
+      text-decoration: none;
+      display: none; /* shown only if auto-redirect fails */
+    }
+    .error-box {
+      background: rgba(239,68,68,0.08);
+      border: 1px solid rgba(239,68,68,0.2);
+      border-radius: 10px;
+      padding: 16px;
+      font-size: 13px;
+      color: #f87171;
+      display: none;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img class="logo" src="../assets/logo.png" alt="Veltor"
+         onerror="this.style.display='none';document.querySelector('.logo-fallback').style.display='flex'">
+    <div class="logo-fallback" style="display:none">V</div>
+
+    <div class="spinner" id="spinner"></div>
+    <h1 id="title">Returning to Veltor</h1>
+    <p id="message">Completing sign-in. This should only take a moment…</p>
+    <div class="status" id="status"></div>
+    <div class="error-box" id="errorBox"></div>
+    <a class="manual-btn" id="manualBtn" href="#">Open Veltor</a>
+  </div>
+
+  <script>
+    (function () {
+      // Build the deep link by forwarding all query params Tesla sent us
+      var params = window.location.search;   // e.g. ?code=abc&state=xyz
+      var appUrl = 'veltorapp://callback' + params;
+
+      document.getElementById('status').textContent = 'Redirecting…';
+
+      // Attempt redirect immediately
+      window.location.href = appUrl;
+
+      // If the browser doesn't open the app within 2s, show the manual button
+      var timer = setTimeout(function () {
+        document.getElementById('spinner').style.display = 'none';
+        document.getElementById('title').textContent = 'Open Veltor manually';
+        document.getElementById('message').textContent =
+          'Your browser may have blocked the automatic redirect. Tap the button below to return to the app.';
+        document.getElementById('status').textContent = '';
+
+        var btn = document.getElementById('manualBtn');
+        btn.href = appUrl;
+        btn.style.display = 'inline-block';
+      }, 2000);
+
+      // If we come back into focus, the app opened — clean up
+      window.addEventListener('focus', function () {
+        clearTimeout(timer);
+      });
+
+      // Handle error param from Tesla (e.g. user cancelled)
+      var urlParams = new URLSearchParams(window.location.search);
+      var error = urlParams.get('error');
+      if (error) {
+        clearTimeout(timer);
+        document.getElementById('spinner').style.display = 'none';
+        document.getElementById('title').textContent = 'Sign-in cancelled';
+        document.getElementById('message').textContent =
+          'You cancelled the Tesla sign-in. Return to Veltor and try again.';
+        document.getElementById('status').textContent = '';
+
+        var errBox = document.getElementById('errorBox');
+        errBox.textContent = 'Error: ' + error +
+          (urlParams.get('error_description')
+            ? ' — ' + urlParams.get('error_description')
+            : '');
+        errBox.style.display = 'block';
+
+        // Still try to redirect so the app can handle the error state
+        window.location.href = appUrl;
+      }
+    })();
+  </script>
+</body>
+</html>

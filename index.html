@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Veltor — AI Driving Companion</title>
+  <meta name="description" content="Veltor transforms your phone into an AI-powered driving companion. Real-time dashboards, HUD mode, procedural engine sounds, and drive coaching for Tesla and all vehicles.">
+  <meta name="theme-color" content="#000000">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Veltor — AI Driving Companion">
+  <meta property="og:description" content="The smartest co-pilot for every driver, every vehicle, every journey.">
+  <meta property="og:image" content="https://veltorapp.com/assets/og.png">
+  <meta property="og:url" content="https://veltorapp.com">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@veltorapp">
+  <meta name="twitter:title" content="Veltor — AI Driving Companion">
+  <meta name="twitter:description" content="The smartest co-pilot for every driver, every vehicle, every journey.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:    #4FC3F7;
+      --blue-dim: #1E88E5;
+      --silver:  #D4D4D4;
+      --white:   #FFFFFF;
+      --muted:   #888888;
+      --bg:      #000000;
+      --surface: #0C0C0C;
+      --border:  rgba(255,255,255,0.07);
+      --glow:    0 0 40px rgba(79,195,247,0.25);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 40px;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
+      backdrop-filter: blur(0px);
+      transition: background 0.3s, backdrop-filter 0.3s;
+    }
+    nav.scrolled {
+      background: rgba(0,0,0,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo img { height: 32px; width: 32px; object-fit: contain; }
+    .nav-logo span {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 15px; font-weight: 700;
+      color: var(--white); letter-spacing: 3px;
+    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--muted);
+      font-size: 13px; font-weight: 500; letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      background: var(--blue); color: #000;
+      padding: 9px 20px; border-radius: 8px;
+      font-size: 13px; font-weight: 600;
+      text-decoration: none; letter-spacing: 0.3px;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 30%, rgba(79,195,247,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 30% at 50% 60%, rgba(30,136,229,0.05) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-logo {
+      width: 140px; height: 140px;
+      object-fit: contain;
+      margin-bottom: 40px;
+      filter: drop-shadow(0 0 40px rgba(79,195,247,0.4));
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-12px); }
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(79,195,247,0.08);
+      border: 1px solid rgba(79,195,247,0.2);
+      border-radius: 100px;
+      padding: 6px 14px; margin-bottom: 24px;
+      font-size: 11px; font-weight: 600; letter-spacing: 1.5px;
+      color: var(--blue); text-transform: uppercase;
+    }
+    .hero-badge::before {
+      content: ''; width: 6px; height: 6px;
+      background: var(--blue); border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(0.8); }
+    }
+    .hero h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(40px, 8vw, 80px);
+      font-weight: 900; letter-spacing: -1px;
+      line-height: 1.05;
+      background: linear-gradient(135deg, #fff 0%, #c8e6f5 40%, #4FC3F7 70%, #1E88E5 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: clamp(16px, 2.5vw, 20px);
+      color: var(--muted); font-weight: 400;
+      max-width: 520px; line-height: 1.7;
+      margin-bottom: 44px;
+    }
+    .hero-actions {
+      display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--blue); color: #000;
+      padding: 14px 28px; border-radius: 10px;
+      font-size: 14px; font-weight: 700; letter-spacing: 0.3px;
+      text-decoration: none;
+      transition: all 0.25s;
+      box-shadow: 0 0 30px rgba(79,195,247,0.3);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 50px rgba(79,195,247,0.5);
+    }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--white);
+      padding: 14px 28px; border-radius: 10px;
+      font-size: 14px; font-weight: 500;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.09);
+      border-color: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+    .store-icon { width: 18px; height: 18px; }
+
+    /* ── SCROLL INDICATOR ── */
+    .scroll-hint {
+      position: absolute; bottom: 40px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center;
+      gap: 8px; color: var(--muted); font-size: 11px; letter-spacing: 1px;
+    }
+    .scroll-hint::after {
+      content: '';
+      width: 1px; height: 40px;
+      background: linear-gradient(to bottom, var(--muted), transparent);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0%   { opacity: 1; transform: scaleY(1); transform-origin: top; }
+      100% { opacity: 0; transform: scaleY(0.3); transform-origin: top; }
+    }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 100px 24px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 3px;
+      color: var(--blue); text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700; line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      color: var(--muted); font-size: 16px;
+      max-width: 560px; line-height: 1.7;
+      margin-bottom: 60px;
+    }
+
+    /* ── FEATURES ── */
+    .features { background: var(--surface); }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .feature-card {
+      background: var(--surface);
+      padding: 40px 36px;
+      transition: background 0.2s;
+    }
+    .feature-card:hover { background: #111; }
+    .feature-icon {
+      width: 48px; height: 48px;
+      background: rgba(79,195,247,0.08);
+      border: 1px solid rgba(79,195,247,0.15);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+      font-size: 22px;
+    }
+    .feature-card h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 14px; font-weight: 600;
+      letter-spacing: 1px; margin-bottom: 10px;
+      color: var(--white);
+    }
+    .feature-card p {
+      font-size: 14px; color: var(--muted); line-height: 1.7;
+    }
+
+    /* ── STATS ── */
+    .stats {
+      background: linear-gradient(135deg, rgba(79,195,247,0.04) 0%, transparent 60%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 48px;
+      text-align: center;
+    }
+    .stat-value {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(36px, 5vw, 52px);
+      font-weight: 900; line-height: 1;
+      background: linear-gradient(135deg, #fff, var(--blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+    .stat-label {
+      font-size: 12px; color: var(--muted);
+      font-weight: 500; letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 48px; counter-reset: step;
+    }
+    .step { position: relative; counter-increment: step; }
+    .step::before {
+      content: counter(step, decimal-leading-zero);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 48px; font-weight: 900;
+      color: rgba(79,195,247,0.08);
+      line-height: 1;
+      display: block; margin-bottom: 16px;
+    }
+    .step h3 {
+      font-size: 16px; font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .step p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+    /* ── TESLA ── */
+    .tesla-section {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+    }
+    .tesla-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+    .tesla-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px; padding: 8px 14px;
+      font-size: 12px; color: var(--muted);
+      margin-bottom: 24px; font-weight: 500;
+    }
+    .telemetry-list {
+      list-style: none; display: flex;
+      flex-direction: column; gap: 12px;
+    }
+    .telemetry-list li {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 14px; color: var(--silver);
+    }
+    .telemetry-list li::before {
+      content: '';
+      width: 6px; height: 6px; flex-shrink: 0;
+      background: var(--blue); border-radius: 50%;
+      box-shadow: 0 0 8px var(--blue);
+    }
+    .tesla-visual {
+      background: linear-gradient(135deg, #0a0f14 0%, #050a0e 100%);
+      border: 1px solid rgba(79,195,247,0.12);
+      border-radius: 20px; padding: 40px;
+      box-shadow: var(--glow);
+    }
+    .data-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .data-row:last-child { border-bottom: none; }
+    .data-label { font-size: 11px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+    .data-value {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 20px; font-weight: 700;
+      color: var(--blue);
+    }
+    .data-unit { font-size: 11px; color: var(--muted); margin-left: 4px; }
+
+    /* ── PRICING ── */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px; max-width: 800px; margin: 0 auto;
+    }
+    .pricing-card {
+      border: 1px solid var(--border);
+      border-radius: 20px; padding: 36px;
+      background: var(--surface);
+      position: relative; overflow: hidden;
+    }
+    .pricing-card.featured {
+      border-color: rgba(79,195,247,0.3);
+      background: linear-gradient(135deg, #050f18 0%, #000 100%);
+      box-shadow: var(--glow);
+    }
+    .pricing-card.featured::before {
+      content: 'MOST POPULAR';
+      position: absolute; top: 0; right: 0;
+      background: var(--blue); color: #000;
+      font-size: 9px; font-weight: 800; letter-spacing: 1.5px;
+      padding: 6px 14px;
+      border-radius: 0 20px 0 10px;
+    }
+    .plan-name {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 2px; color: var(--muted);
+      text-transform: uppercase; margin-bottom: 20px;
+    }
+    .plan-price {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 48px; font-weight: 900;
+      line-height: 1; margin-bottom: 4px;
+    }
+    .plan-price span { font-size: 20px; color: var(--muted); }
+    .plan-period { font-size: 13px; color: var(--muted); margin-bottom: 28px; }
+    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+    .plan-features li {
+      font-size: 13px; color: var(--silver);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .plan-features li::before {
+      content: '✓';
+      color: var(--blue); font-weight: 700; font-size: 12px;
+    }
+    .plan-features li.muted { color: var(--muted); }
+    .plan-features li.muted::before { content: '–'; color: var(--muted); }
+    .plan-btn {
+      display: block; text-align: center;
+      padding: 13px; border-radius: 10px;
+      font-size: 13px; font-weight: 700;
+      text-decoration: none; letter-spacing: 0.5px;
+      transition: all 0.2s;
+    }
+    .plan-btn.outline {
+      border: 1px solid rgba(255,255,255,0.15);
+      color: var(--white);
+    }
+    .plan-btn.outline:hover { background: rgba(255,255,255,0.06); }
+    .plan-btn.filled {
+      background: var(--blue); color: #000;
+      box-shadow: 0 0 20px rgba(79,195,247,0.25);
+    }
+    .plan-btn.filled:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    /* ── CTA ── */
+    .cta-section {
+      text-align: center;
+      padding: 120px 24px;
+      position: relative; overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(79,195,247,0.06), transparent);
+      pointer-events: none;
+    }
+    .cta-section h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 900; margin-bottom: 16px;
+    }
+    .cta-section p { color: var(--muted); margin-bottom: 40px; font-size: 16px; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 48px 40px;
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 24px;
+    }
+    .footer-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+    }
+    .footer-logo img { height: 28px; }
+    .footer-logo span {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 13px; font-weight: 700;
+      color: var(--white); letter-spacing: 3px;
+    }
+    .footer-links { display: flex; gap: 28px; flex-wrap: wrap; }
+    .footer-links a {
+      text-decoration: none; color: var(--muted);
+      font-size: 13px; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--white); }
+    .footer-copy { color: var(--muted); font-size: 12px; }
+    .social-links { display: flex; gap: 16px; }
+    .social-links a {
+      width: 36px; height: 36px;
+      border: 1px solid var(--border); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted); text-decoration: none;
+      font-size: 14px; transition: all 0.2s;
+    }
+    .social-links a:hover { border-color: var(--blue); color: var(--blue); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      .tesla-layout { grid-template-columns: 1fr; gap: 40px; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      section { padding: 72px 20px; }
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="/">
+    <img src="assets/logo.png" alt="Veltor">
+    <span>VELTOR</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#tesla">Tesla</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="privacy/">Privacy</a></li>
+  </ul>
+  <a class="nav-cta" href="#download">Download</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-logo" src="assets/logo.png" alt="Veltor">
+  <div class="hero-badge">Now Available</div>
+  <h1>Your AI Driving<br>Companion</h1>
+  <p>Real-time dashboards, heads-up display, procedural engine sounds, and AI drive coaching — for Tesla and every vehicle.</p>
+  <div class="hero-actions" id="download">
+    <a class="btn-primary" href="#">
+      <svg class="store-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      App Store
+    </a>
+    <a class="btn-secondary" href="#">
+      <svg class="store-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.64.24.99.2l12.19-12.2-2.83-2.82-10.35 14.82zm16.4-9.42l-2.44-1.4-3.1 3.1 3.1 3.09 2.45-1.41c.7-.4.7-1.37-.01-1.38zM2.1 1.04C2.04 1.2 2 1.37 2 1.56v20.88c0 .19.04.36.1.52l.08.08 11.7-11.71v-.28L2.18.96l-.08.08zM8.89 8.77l-5.7-5.7-.05.04 11.74 16.82 2.8-2.8-8.79-8.36z"/></svg>
+      Google Play
+    </a>
+  </div>
+  <div class="scroll-hint">SCROLL</div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid fade-up">
+      <div>
+        <div class="stat-value">5</div>
+        <div class="stat-label">Core Features</div>
+      </div>
+      <div>
+        <div class="stat-value">3</div>
+        <div class="stat-label">Dashboard Themes</div>
+      </div>
+      <div>
+        <div class="stat-value">60</div>
+        <div class="stat-label">FPS Smooth</div>
+      </div>
+      <div>
+        <div class="stat-value">0</div>
+        <div class="stat-label">Servers Required</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="container">
+    <p class="section-label fade-up">What's inside</p>
+    <h2 class="section-title fade-up">Everything you need<br>on every drive.</h2>
+    <p class="section-sub fade-up">Five deeply integrated features that work together seamlessly — on screen, in your windshield, and in your ears.</p>
+
+    <div class="features-grid fade-up">
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>AI DASHBOARD</h3>
+        <p>Multiple customisable themes with live speed, battery, power, regen, gear and more. Portrait and landscape optimised.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🪟</div>
+        <h3>HUD MODE</h3>
+        <p>Project your speed onto the windshield. Mirror mode, adjustable angle, 4 colour themes, and a minimal large-speed view.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔊</div>
+        <h3>ENGINE SOUND</h3>
+        <p>Real-time crossfaded engine audio that responds to your speed and acceleration. Multiple sound packs available.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏆</div>
+        <h3>DRIVE COACH</h3>
+        <p>Live scoring for acceleration, braking, cornering and smoothness. Gamified challenges and post-trip summaries.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🤖</div>
+        <h3>ADAPTIVE LAYOUT</h3>
+        <p>The dashboard intelligently switches layouts based on context — city, motorway, charging, night, and more.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌐</div>
+        <h3>UNIVERSAL</h3>
+        <p>Works on any vehicle via GPS and phone sensors. No OBD dongle required. Tesla gets full telemetry via the Fleet API.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESLA SECTION -->
+<section class="tesla-section" id="tesla">
+  <div class="container">
+    <div class="tesla-layout">
+      <div class="fade-up">
+        <p class="section-label">Tesla Integration</p>
+        <h2 class="section-title">Full telemetry.<br>No wires.</h2>
+        <div class="tesla-badge">
+          <span style="color:var(--blue)">●</span>
+          OAuth 2.0 + PKCE — your password is never seen by Veltor
+        </div>
+        <ul class="telemetry-list">
+          <li>Real-time speed from vehicle (not GPS)</li>
+          <li>Battery percentage and state</li>
+          <li>Power output and regeneration (kW)</li>
+          <li>Gear — P R N D</li>
+          <li>Charging state and rate</li>
+          <li>Outside temperature</li>
+          <li>Estimated range</li>
+          <li>Turn signal indicators</li>
+          <li>Automatic GPS fallback when asleep</li>
+        </ul>
+      </div>
+      <div class="tesla-visual fade-up">
+        <div style="font-family:'Orbitron',sans-serif;font-size:11px;letter-spacing:2px;color:var(--muted);margin-bottom:24px;">LIVE TELEMETRY</div>
+        <div class="data-row">
+          <span class="data-label">Speed</span>
+          <span><span class="data-value">72</span><span class="data-unit">MPH</span></span>
+        </div>
+        <div class="data-row">
+          <span class="data-label">Battery</span>
+          <span><span class="data-value">85</span><span class="data-unit">%</span></span>
+        </div>
+        <div class="data-row">
+          <span class="data-label">Power</span>
+          <span><span class="data-value">48</span><span class="data-unit">kW</span></span>
+        </div>
+        <div class="data-row">
+          <span class="data-label">Gear</span>
+          <span><span class="data-value">D</span></span>
+        </div>
+        <div class="data-row">
+          <span class="data-label">Range</span>
+          <span><span class="data-value">187</span><span class="data-unit">MI</span></span>
+        </div>
+        <div class="data-row">
+          <span class="data-label">Outside Temp</span>
+          <span><span class="data-value">18</span><span class="data-unit">°C</span></span>
+        </div>
+        <div style="margin-top:20px;padding:10px 14px;background:rgba(79,195,247,0.06);border:1px solid rgba(79,195,247,0.15);border-radius:8px;display:flex;align-items:center;gap:8px;">
+          <span style="width:8px;height:8px;background:#4ade80;border-radius:50%;display:inline-block;box-shadow:0 0 8px #4ade80;flex-shrink:0;"></span>
+          <span style="font-size:12px;color:#4ade80;font-weight:600;">Tesla Connected</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section>
+  <div class="container">
+    <p class="section-label fade-up">Setup</p>
+    <h2 class="section-title fade-up">Up and running<br>in under a minute.</h2>
+    <p class="section-sub fade-up">No hardware, no subscription, no pairing process. Just download and drive.</p>
+    <div class="steps fade-up">
+      <div class="step">
+        <h3>Download Veltor</h3>
+        <p>Available free on the App Store and Google Play. Works on any iPhone or Android from the last 5 years.</p>
+      </div>
+      <div class="step">
+        <h3>Choose your vehicle</h3>
+        <p>Select Tesla for full telemetry integration, or any other vehicle for GPS + sensor mode. Switch anytime.</p>
+      </div>
+      <div class="step">
+        <h3>Mount your phone</h3>
+        <p>Use any dashboard or windshield mount. Enable HUD mode to project speed onto your windshield.</p>
+      </div>
+      <div class="step">
+        <h3>Just drive</h3>
+        <p>Veltor does the rest. Live data, engine sounds, coaching scores — all automatic from the moment you move.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" style="background:var(--surface);border-top:1px solid var(--border);">
+  <div class="container" style="text-align:center;">
+    <p class="section-label fade-up">Pricing</p>
+    <h2 class="section-title fade-up">Fair price.<br>Yours forever.</h2>
+    <p class="section-sub fade-up" style="margin:0 auto 48px;">No subscriptions. One purchase unlocks everything, permanently.</p>
+    <div class="pricing-grid fade-up">
+      <div class="pricing-card">
+        <div class="plan-name">Free</div>
+        <div class="plan-price">$0</div>
+        <div class="plan-period">Always free</div>
+        <ul class="plan-features">
+          <li>GPS Dashboard (Minimal theme)</li>
+          <li>HUD Mode</li>
+          <li>1 Engine Sound Pack</li>
+          <li>Drive Coach</li>
+          <li class="muted">Tesla Integration</li>
+          <li class="muted">Premium Themes</li>
+          <li class="muted">All Sound Packs</li>
+        </ul>
+        <a href="#download" class="plan-btn outline">Download Free</a>
+      </div>
+      <div class="pricing-card featured">
+        <div class="plan-name">Pro</div>
+        <div class="plan-price"><span>$</span>9.99</div>
+        <div class="plan-period">One-time purchase</div>
+        <ul class="plan-features">
+          <li>Everything in Free</li>
+          <li>Tesla Full Integration</li>
+          <li>All Dashboard Themes</li>
+          <li>All Sound Packs</li>
+          <li>Advanced Analytics</li>
+          <li>No Ads</li>
+          <li>Future updates included</li>
+        </ul>
+        <a href="#download" class="plan-btn filled">Unlock Forever</a>
+      </div>
+    </div>
+    <p style="color:var(--muted);font-size:12px;margin-top:24px;">Individual themes and sound packs also available separately.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <h2 class="fade-up">Ready to drive smarter?</h2>
+    <p class="fade-up">Download Veltor free today. Tesla or any vehicle.</p>
+    <div class="hero-actions fade-up">
+      <a class="btn-primary" href="#">
+        <svg class="store-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        App Store
+      </a>
+      <a class="btn-secondary" href="#">
+        <svg class="store-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.64.24.99.2l12.19-12.2-2.83-2.82-10.35 14.82zm16.4-9.42l-2.44-1.4-3.1 3.1 3.1 3.09 2.45-1.41c.7-.4.7-1.37-.01-1.38zM2.1 1.04C2.04 1.2 2 1.37 2 1.56v20.88c0 .19.04.36.1.52l.08.08 11.7-11.71v-.28L2.18.96l-.08.08zM8.89 8.77l-5.7-5.7-.05.04 11.74 16.82 2.8-2.8-8.79-8.36z"/></svg>
+        Google Play
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a class="footer-logo" href="/">
+      <img src="assets/logo.png" alt="Veltor">
+      <span>VELTOR</span>
+    </a>
+    <div class="footer-links">
+      <a href="privacy/">Privacy Policy</a>
+      <a href="mailto:support@veltorapp.com">Support</a>
+    </div>
+    <div class="social-links">
+      <a href="https://twitter.com/veltorapp" title="Twitter/X">𝕏</a>
+      <a href="https://instagram.com/veltorapp" title="Instagram">◎</a>
+      <a href="https://youtube.com/@veltorapp" title="YouTube">▶</a>
+    </div>
+    <span class="footer-copy">© 2026 Veltor. All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll effect
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Fade-in on scroll
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    }),
+    { threshold: 0.15 }
+  );
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

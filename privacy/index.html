@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Veltor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #000;
+      color: #d4d4d4;
+      line-height: 1.8;
+    }
+    nav {
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding: 20px 40px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    nav a { text-decoration: none; color: #888; font-size: 13px; }
+    nav a:hover { color: #fff; }
+    nav .sep { color: #444; }
+    nav .logo-link {
+      display: flex; align-items: center; gap: 8px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 13px; font-weight: 700;
+      color: #fff; letter-spacing: 3px;
+      text-decoration: none;
+    }
+    nav .logo-link img { height: 24px; }
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 72px 24px 120px;
+    }
+    .tag {
+      font-size: 11px; font-weight: 700; letter-spacing: 3px;
+      color: #4FC3F7; text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 700; color: #fff;
+      margin-bottom: 8px; line-height: 1.15;
+    }
+    .meta {
+      font-size: 13px; color: #555;
+      margin-bottom: 56px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    h2 {
+      font-size: 16px; font-weight: 600;
+      color: #fff; margin: 40px 0 12px;
+    }
+    p { font-size: 14px; color: #888; margin-bottom: 16px; }
+    ul {
+      list-style: none; padding: 0;
+      display: flex; flex-direction: column; gap: 8px;
+      margin-bottom: 16px;
+    }
+    ul li {
+      font-size: 14px; color: #888;
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+    ul li::before {
+      content: '–';
+      color: #4FC3F7; flex-shrink: 0;
+      margin-top: 2px;
+    }
+    a { color: #4FC3F7; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .highlight {
+      background: rgba(79,195,247,0.05);
+      border: 1px solid rgba(79,195,247,0.12);
+      border-radius: 10px; padding: 20px 24px;
+      margin: 24px 0;
+    }
+    .highlight p { color: #aaa; margin: 0; font-size: 13px; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="logo-link" href="/">
+    <img src="../assets/logo.png" alt="Veltor"
+         onerror="this.style.display='none'">
+    VELTOR
+  </a>
+  <span class="sep">/</span>
+  <a href="#">Privacy Policy</a>
+</nav>
+
+<div class="content">
+  <p class="tag">Legal</p>
+  <h1>Privacy Policy</h1>
+  <p class="meta">Last updated: 1 July 2026 &nbsp;·&nbsp; Effective immediately</p>
+
+  <div class="highlight">
+    <p><strong style="color:#fff">Short version:</strong> Veltor does not collect, store, or sell your personal data. Everything stays on your device. We do not run servers that hold your information.</p>
+  </div>
+
+  <h2>1. Who we are</h2>
+  <p>Veltor ("we", "us", "our") is a mobile application developed and published by Veltor App. Contact: <a href="mailto:privacy@veltorapp.com">privacy@veltorapp.com</a></p>
+
+  <h2>2. Data we collect — and what we do not</h2>
+  <p>Veltor is designed to be serverless and offline-first. We do <strong style="color:#fff">not</strong> operate any cloud backend that stores your data.</p>
+  <p>The following data is processed entirely on your device and never transmitted to our servers:</p>
+  <ul>
+    <li>Location / GPS data (used for speed calculation and HUD display)</li>
+    <li>Accelerometer and gyroscope readings (used for drive coaching and engine sound)</li>
+    <li>Tesla API access tokens (stored in your device's secure keychain / encrypted storage)</li>
+    <li>Tesla vehicle telemetry (speed, battery, gear, etc.) — fetched directly from Tesla's servers to your device</li>
+    <li>Trip history and driving scores (stored locally in the app's private database)</li>
+    <li>App preferences and settings</li>
+  </ul>
+
+  <h2>3. Tesla account and OAuth</h2>
+  <p>If you connect a Tesla account, Veltor uses Tesla's official OAuth 2.0 + PKCE flow. This means:</p>
+  <ul>
+    <li>You sign in directly on Tesla's own website — Veltor never sees your Tesla password</li>
+    <li>Tesla issues access tokens directly to your device</li>
+    <li>Tokens are stored in your device's secure enclave (iOS Keychain / Android EncryptedSharedPreferences)</li>
+    <li>Veltor communicates with the Tesla Fleet API directly from your device — no proxy server</li>
+    <li>You can revoke access at any time via your Tesla account at <a href="https://tesla.com" target="_blank">tesla.com</a></li>
+  </ul>
+  <p>The callback URL <code style="color:#4FC3F7;font-size:12px">https://veltorapp.com/callback</code> is a static redirect page hosted on GitHub Pages that immediately redirects to the Veltor app on your device. No data from this redirect is logged or stored.</p>
+
+  <h2>4. Location data</h2>
+  <p>Veltor requests "When In Use" location permission to provide GPS speed readings and HUD display. Location data is processed in real-time on your device and is never uploaded to any server.</p>
+  <p>If you grant "Always" location access, this enables speed tracking while the app is backgrounded. This data remains local to your device.</p>
+
+  <h2>5. Analytics and crash reporting</h2>
+  <p>The current version of Veltor does not include any third-party analytics SDK. If this changes in a future version, this policy will be updated and you will be notified in the app before any analytics are collected.</p>
+
+  <h2>6. Advertising</h2>
+  <p>The free tier of Veltor may display advertisements served by Google AdMob. Google's privacy policy applies to data collected by AdMob: <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></p>
+  <p>Upgrading to Veltor Pro removes all advertising.</p>
+
+  <h2>7. In-app purchases</h2>
+  <p>Purchases are processed by Apple (App Store) or Google (Google Play). We receive confirmation that a purchase was made, but we do not receive your payment card details. Purchase records are stored locally on your device.</p>
+
+  <h2>8. Children's privacy</h2>
+  <p>Veltor is not directed at children under 13. We do not knowingly collect personal information from children. If you believe a child has provided us with information, contact us at <a href="mailto:privacy@veltorapp.com">privacy@veltorapp.com</a>.</p>
+
+  <h2>9. Data retention and deletion</h2>
+  <p>Since all data is stored locally on your device, you can delete all Veltor data at any time by uninstalling the app. Tesla tokens are stored in your device keychain and are also deleted on uninstall.</p>
+  <p>To revoke Tesla API access independently of uninstalling the app, go to Settings → Sign out of Tesla within the app, or visit your Tesla account security settings.</p>
+
+  <h2>10. Your rights</h2>
+  <p>Because we do not hold personal data on our servers, rights such as data access, rectification, and erasure are exercised directly on your device by using the app's built-in controls or uninstalling the app.</p>
+  <p>For any privacy concerns, contact us at <a href="mailto:privacy@veltorapp.com">privacy@veltorapp.com</a>. We will respond within 30 days.</p>
+
+  <h2>11. Changes to this policy</h2>
+  <p>We may update this Privacy Policy as the app evolves. We will notify you of material changes via an in-app notice. Continued use of the app after changes constitutes acceptance of the revised policy.</p>
+
+  <h2>12. Contact</h2>
+  <p>Veltor App<br>
+  <a href="mailto:privacy@veltorapp.com">privacy@veltorapp.com</a><br>
+  <a href="https://veltorapp.com">veltorapp.com</a></p>
+</div>
+
+</body>
+</html>
