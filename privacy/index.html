@@ -94,70 +94,59 @@
   <a href="#">Privacy Policy</a>
 </nav>
 
+
 <div class="content">
-  <p class="tag">Legal</p>
+  <div class="tag">Legal</div>
   <h1>Privacy Policy</h1>
-  <p class="meta">Last updated: 1 July 2026 &nbsp;·&nbsp; Effective immediately</p>
+  <div class="meta">Last updated: 16 July 2026 &nbsp;·&nbsp; Effective immediately</div>
 
   <div class="highlight">
-    <p><strong style="color:#fff">Short version:</strong> Veltor does not collect, store, or sell your personal data. Everything stays on your device. We do not run servers that hold your information.</p>
+    <p><strong>Short version:</strong> Veltor has no servers and no user accounts. It does not collect, store, transmit, or sell your personal data. Your VIN never leaves your phone. Everything the app knows stays on your device.</p>
   </div>
 
   <h2>1. Who we are</h2>
   <p>Veltor ("we", "us", "our") is a mobile application developed and published by Veltor App. Contact: <a href="mailto:privacy@veltorapp.com">privacy@veltorapp.com</a></p>
 
-  <h2>2. Data we collect — and what we do not</h2>
-  <p>Veltor is designed to be serverless and offline-first. We do <strong style="color:#fff">not</strong> operate any cloud backend that stores your data.</p>
-  <p>The following data is processed entirely on your device and never transmitted to our servers:</p>
+  <h2>2. We do not collect your data</h2>
+  <p>Veltor is serverless and offline-first. We operate no cloud backend, we have no user accounts, and there is nowhere for your data to be sent — so none of it is collected, transmitted, or shared with us or anyone else.</p>
+  <p>The following is processed <strong>entirely on your device</strong> and never leaves it:</p>
   <ul>
-    <li>Location / GPS data (used for speed calculation and HUD display)</li>
-    <li>Accelerometer and gyroscope readings (used for drive coaching and engine sound)</li>
-    <li>Tesla API access tokens (stored in your device's secure keychain / encrypted storage)</li>
-    <li>Tesla vehicle telemetry (speed, battery, gear, etc.) — fetched directly from Tesla's servers to your device</li>
-    <li>Trip history and driving scores (stored locally in the app's private database)</li>
+    <li>Your vehicle identification number (VIN) — see section 3</li>
+    <li>Live vehicle telemetry read from your car (speed, gear, motor power, battery, odometer)</li>
+    <li>Location / GPS data, when you use the app with a non-Tesla vehicle or the HUD (used only to calculate speed on your device)</li>
+    <li>Trip history and efficiency statistics (stored in the app's private, on-device storage)</li>
     <li>App preferences and settings</li>
   </ul>
+  <p>Uninstalling the app deletes all of it.</p>
 
-  <h2>3. Tesla account and OAuth</h2>
-  <p>If you connect a Tesla account, Veltor uses Tesla's official OAuth 2.0 + PKCE flow. This means:</p>
-  <ul>
-    <li>You sign in directly on Tesla's own website — Veltor never sees your Tesla password</li>
-    <li>Tesla issues access tokens directly to your device</li>
-    <li>Tokens are stored in your device's secure enclave (iOS Keychain / Android EncryptedSharedPreferences)</li>
-    <li>Veltor communicates with the Tesla Fleet API directly from your device — no proxy server</li>
-    <li>You can revoke access at any time via your Tesla account at <a href="https://tesla.com" target="_blank">tesla.com</a></li>
-  </ul>
-  <p>The callback URL <code style="color:#4FC3F7;font-size:12px">https://veltorapp.com/callback</code> is a static redirect page hosted on GitHub Pages that immediately redirects to the Veltor app on your device. No data from this redirect is logged or stored.</p>
+  <h2>3. Your VIN, and how Veltor talks to your car</h2>
+  <p>Veltor connects <strong>directly to your Tesla over Bluetooth Low Energy</strong>. It does not use the Tesla Fleet API, it does not ask for your Tesla account or password, and it never communicates with Tesla's servers or ours.</p>
+  <p>You enter your VIN once. It is used only, on-device, to recognise your car over Bluetooth and to sign the requests your car trusts, as required by Tesla's Bluetooth protocol. <strong>Your VIN is never uploaded, logged remotely, or shared.</strong></p>
+  <p>Veltor adds itself to your vehicle as a <strong>read-only key</strong>. It can read telemetry. It <em>cannot</em> unlock, start, drive, or send any command to your car. You can remove Veltor's key at any time from your car's touchscreen, under Locks.</p>
 
   <h2>4. Location data</h2>
-  <p>Veltor requests "When In Use" location permission to provide GPS speed readings and HUD display. Location data is processed in real-time on your device and is never uploaded to any server.</p>
-  <p>If you grant "Always" location access, this enables speed tracking while the app is backgrounded. This data remains local to your device.</p>
+  <p>Veltor requests location permission to provide GPS-based speed when you are not connected to a Tesla, and for HUD display. Location is processed in real time on your device and is never uploaded to any server. If you allow background location, this only lets speed — and therefore the engine sound — keep working while the app is in the background. It remains on your device.</p>
 
-  <h2>5. Analytics and crash reporting</h2>
-  <p>The current version of Veltor does not include any third-party analytics SDK. If this changes in a future version, this policy will be updated and you will be notified in the app before any analytics are collected.</p>
+  <h2>5. Analytics, crash reporting and advertising</h2>
+  <p>Veltor contains <strong>no analytics SDK, no crash-reporting SDK, and no advertising</strong>. We do not track you, profile you, or use any third-party tracking technology. There are no identifiers used for tracking, and we do not participate in any ad network.</p>
+  <p>If this ever changes, this policy will be updated and the app's App Store privacy information will be updated before any such code ships.</p>
 
-  <h2>6. Advertising</h2>
-  <p>The free tier of Veltor may display advertisements served by Google AdMob. Google's privacy policy applies to data collected by AdMob: <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></p>
-  <p>Upgrading to Veltor Pro removes all advertising.</p>
+  <h2>6. Diagnostics you choose to send</h2>
+  <p>Veltor keeps a short diagnostic log on your device to help troubleshoot Bluetooth pairing. It is never sent anywhere automatically. It is shared only if <em>you</em> explicitly tap "Share diagnostics", at which point you choose the destination yourself using your phone's own share sheet. <strong>Your VIN, and the Bluetooth name derived from it, are removed from the log before it can be shared.</strong></p>
 
-  <h2>7. In-app purchases</h2>
-  <p>Purchases are processed by Apple (App Store) or Google (Google Play). We receive confirmation that a purchase was made, but we do not receive your payment card details. Purchase records are stored locally on your device.</p>
+  <h2>7. Children's privacy</h2>
+  <p>Veltor is not directed at children. We do not knowingly collect personal information from anyone, including children, because we do not collect personal information at all.</p>
 
-  <h2>8. Children's privacy</h2>
-  <p>Veltor is not directed at children under 13. We do not knowingly collect personal information from children. If you believe a child has provided us with information, contact us at <a href="mailto:privacy@veltorapp.com">privacy@veltorapp.com</a>.</p>
+  <h2>8. Data retention and deletion</h2>
+  <p>Because everything is stored locally on your device, you can delete all Veltor data at any time by uninstalling the app. To additionally remove Veltor's read-only key from your vehicle, use your car's touchscreen: Controls → Locks.</p>
 
-  <h2>9. Data retention and deletion</h2>
-  <p>Since all data is stored locally on your device, you can delete all Veltor data at any time by uninstalling the app. Tesla tokens are stored in your device keychain and are also deleted on uninstall.</p>
-  <p>To revoke Tesla API access independently of uninstalling the app, go to Settings → Sign out of Tesla within the app, or visit your Tesla account security settings.</p>
+  <h2>9. Your rights</h2>
+  <p>Rights such as access, rectification, portability and erasure normally apply to data a company holds about you. We hold none. Those rights are therefore exercised directly on your device, through the app's own controls or by uninstalling it. If you have any privacy question or concern, contact us at <a href="mailto:privacy@veltorapp.com">privacy@veltorapp.com</a> and we will respond within 30 days.</p>
 
-  <h2>10. Your rights</h2>
-  <p>Because we do not hold personal data on our servers, rights such as data access, rectification, and erasure are exercised directly on your device by using the app's built-in controls or uninstalling the app.</p>
-  <p>For any privacy concerns, contact us at <a href="mailto:privacy@veltorapp.com">privacy@veltorapp.com</a>. We will respond within 30 days.</p>
+  <h2>10. Changes to this policy</h2>
+  <p>We may update this Privacy Policy as the app evolves. Material changes will be notified via an in-app notice. Continued use of the app after changes constitutes acceptance of the revised policy.</p>
 
-  <h2>11. Changes to this policy</h2>
-  <p>We may update this Privacy Policy as the app evolves. We will notify you of material changes via an in-app notice. Continued use of the app after changes constitutes acceptance of the revised policy.</p>
-
-  <h2>12. Contact</h2>
+  <h2>11. Contact</h2>
   <p>Veltor App<br>
   <a href="mailto:privacy@veltorapp.com">privacy@veltorapp.com</a><br>
   <a href="https://veltorapp.com">veltorapp.com</a></p>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — Veltor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #000;
+      color: #d4d4d4;
+      line-height: 1.8;
+    }
+    nav {
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding: 20px 40px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    nav a { text-decoration: none; color: #888; font-size: 13px; }
+    nav a:hover { color: #fff; }
+    nav .sep { color: #444; }
+    nav .logo-link {
+      display: flex; align-items: center; gap: 8px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 13px; font-weight: 700;
+      color: #fff; letter-spacing: 3px;
+      text-decoration: none;
+    }
+    nav .logo-link img { height: 24px; }
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 72px 24px 120px;
+    }
+    .tag {
+      font-size: 11px; font-weight: 700; letter-spacing: 3px;
+      color: #4FC3F7; text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 700; color: #fff;
+      margin-bottom: 8px; line-height: 1.15;
+    }
+    .meta {
+      font-size: 13px; color: #555;
+      margin-bottom: 56px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    h2 {
+      font-size: 16px; font-weight: 600;
+      color: #fff; margin: 40px 0 12px;
+    }
+    p { font-size: 14px; color: #888; margin-bottom: 16px; }
+    ul {
+      list-style: none; padding: 0;
+      display: flex; flex-direction: column; gap: 8px;
+      margin-bottom: 16px;
+    }
+    ul li {
+      font-size: 14px; color: #888;
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+    ul li::before {
+      content: '–';
+      color: #4FC3F7; flex-shrink: 0;
+      margin-top: 2px;
+    }
+    a { color: #4FC3F7; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .highlight {
+      background: rgba(79,195,247,0.05);
+      border: 1px solid rgba(79,195,247,0.12);
+      border-radius: 10px; padding: 20px 24px;
+      margin: 24px 0;
+    }
+    .highlight p { color: #aaa; margin: 0; font-size: 13px; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="logo-link" href="/">
+    <img src="../assets/logo-icon.png" alt="Veltor"
+         onerror="this.style.display='none'">
+    VELTOR
+  </a>
+  <span class="sep">/</span>
+  <a href="#">Support</a>
+</nav>
+
+
+<div class="content">
+  <div class="tag">Help</div>
+  <h1>Support</h1>
+  <div class="meta">Questions, bugs, and getting Veltor talking to your car</div>
+
+  <div class="highlight">
+    <p><strong>Need a hand?</strong> Email <a href="mailto:support@veltorapp.com">support@veltorapp.com</a> and we'll get back to you. If something's broken, please include the diagnostics (see below) — it's the fastest route to a fix.</p>
+  </div>
+
+  <h2>Getting started</h2>
+  <ul>
+    <li><span>Open Veltor and choose <strong>Tesla</strong>.</span></li>
+    <li><span>Enter your VIN. You'll find it in the Tesla app under Vehicle → About, or on the driver-side door jamb.</span></li>
+    <li><span>Stand next to your car with your <strong>key card</strong> and tap Connect.</span></li>
+    <li>When the car's screen asks to add a key, hold the card flat on the console reader until it beeps. Veltor connects on its own.</li>
+  </ul>
+  <p>No car to hand? Veltor has a full <strong>demo drive</strong> — run the engine sound, rev counter and dashboard from a slider with no vehicle at all.</p>
+
+  <h2>Pairing isn't working</h2>
+  <ul>
+    <li>Make sure Bluetooth is on and you're standing next to the car.</li>
+    <li>Check the VIN is exactly right — it's how Veltor recognises your car over Bluetooth.</li>
+    <li>Keep the key card flat on the reader until the car beeps; a brief tap often isn't enough.</li>
+    <li>If it still won't pair, toggle your phone's Bluetooth off and on, then try once more.</li>
+    <li>Every Tesla model and firmware is a little different. If yours won't pair, please send diagnostics — that's exactly what they're for.</li>
+  </ul>
+
+  <h2>Sending diagnostics</h2>
+  <p>In the app go to <strong>Settings → Share diagnostics</strong> (there's also a button on the pairing error screen). This produces a short technical log of what happened during the connection.</p>
+  <p>Your <strong>VIN is removed automatically</strong> before the log can be shared, and nothing is ever sent anywhere unless you choose to send it.</p>
+
+  <h2>Is Veltor safe for my car?</h2>
+  <p>Yes. Veltor adds itself as a <strong>read-only key</strong> — it can read telemetry, and it cannot unlock, start, drive, or send any command to your vehicle. You can remove its key at any time from the car's touchscreen under Controls → Locks.</p>
+
+  <h2>Privacy</h2>
+  <p>Veltor has no servers and no accounts, and collects nothing. Your VIN never leaves your phone. See the <a href="/privacy">Privacy Policy</a> for the detail.</p>
+
+  <h2>Contact</h2>
+  <p>Veltor App<br>
+  <a href="mailto:support@veltorapp.com">support@veltorapp.com</a><br>
+  <a href="https://veltorapp.com">veltorapp.com</a></p>
+</div>
+
+</body>
+</html>
