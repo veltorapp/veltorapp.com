@@ -4,14 +4,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Veltor — AI Driving Companion</title>
+  <title>Veltor — An App That Adds Soul To Your Car</title>
   <meta name="description"
-    content="Veltor transforms your phone into an AI-powered driving companion. Real-time dashboards, HUD mode, procedural engine sounds, and drive coaching for Tesla and all vehicles.">
+    content="Veltor turns your phone into a reactive driving companion: live dashboard packs, HUD mode, procedural engine sound and a 0-60 launch timer. Connects directly to Tesla over Bluetooth — no cloud, no account — or any vehicle via GPS.">
   <meta name="theme-color" content="#000000">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/logo-icon.png">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Veltor — AI Driving Companion">
-  <meta property="og:description" content="The smartest co-pilot for every driver, every vehicle, every journey.">
+  <meta property="og:title" content="Veltor — An App That Adds Soul To Your Car">
+  <meta property="og:description"
+    content="Live dashboard packs, reactive engine sound, HUD mode and a launch timer. Direct-to-Tesla over Bluetooth, no cloud — or any car via GPS.">
   <meta property="og:image" content="https://veltorapp.com/assets/og.png">
   <meta property="og:url" content="https://veltorapp.com">
   <meta property="og:type" content="website">
@@ -19,8 +22,9 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@veltorapp">
-  <meta name="twitter:title" content="Veltor — AI Driving Companion">
-  <meta name="twitter:description" content="The smartest co-pilot for every driver, every vehicle, every journey.">
+  <meta name="twitter:title" content="Veltor — An App That Adds Soul To Your Car">
+  <meta name="twitter:description"
+    content="Live dashboard packs, reactive engine sound, HUD mode and a launch timer. Direct-to-Tesla over Bluetooth, no cloud — or any car via GPS.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -586,6 +590,52 @@
     }
 
     /* ── PRICING ── */
+    .billing-toggle {
+      display: inline-flex;
+      gap: 4px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 4px;
+      margin-bottom: 44px;
+    }
+
+    .billing-opt {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 9px 18px;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .billing-opt.active {
+      background: var(--blue);
+      color: #000;
+      font-weight: 700;
+    }
+
+    .billing-opt .save-tag {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      background: rgba(0, 0, 0, 0.15);
+      padding: 2px 6px;
+      border-radius: 100px;
+    }
+
+    .billing-opt:not(.active) .save-tag {
+      background: rgba(79, 195, 247, 0.15);
+      color: var(--blue);
+    }
+
     .pricing-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -886,9 +936,9 @@
   <section class="hero">
     <img class="hero-logo" src="assets/logo.png" alt="Veltor">
     <div class="hero-badge">Now Available</div>
-    <h1>Your AI Driving<br>Companion</h1>
-    <p>Real-time dashboards, heads-up display, procedural engine sounds, and AI drive coaching — for Tesla and every
-      vehicle.</p>
+    <h1>An App That Adds<br>Soul To Your Car</h1>
+    <p>Live dashboard packs, a heads-up display, engine sound that reacts to how you drive, and a launch timer —
+      wired straight into your Tesla over Bluetooth, no cloud required. Or any vehicle, via GPS.</p>
     <div class="hero-actions" id="download">
       <a class="btn-primary" href="#">
         <svg class="store-icon" viewBox="0 0 24 24" fill="currentColor">
@@ -913,12 +963,12 @@
     <div class="container">
       <div class="stats-grid fade-up">
         <div>
-          <div class="stat-value">5</div>
-          <div class="stat-label">Core Features</div>
+          <div class="stat-value">18</div>
+          <div class="stat-label">Engine Sound Packs</div>
         </div>
         <div>
-          <div class="stat-value">3</div>
-          <div class="stat-label">Dashboard Themes</div>
+          <div class="stat-value">4</div>
+          <div class="stat-label">Dashboard Packs</div>
         </div>
         <div>
           <div class="stat-value">60</div>
@@ -926,7 +976,7 @@
         </div>
         <div>
           <div class="stat-value">0</div>
-          <div class="stat-label">Servers Required</div>
+          <div class="stat-label">Cloud Servers</div>
         </div>
       </div>
     </div>
@@ -937,45 +987,45 @@
     <div class="container">
       <p class="section-label fade-up">What's inside</p>
       <h2 class="section-title fade-up">Everything you need<br>on every drive.</h2>
-      <p class="section-sub fade-up">Five deeply integrated features that work together seamlessly — on screen, in your
+      <p class="section-sub fade-up">Six deeply integrated features that work together seamlessly — on screen, in your
         windshield, and in your ears.</p>
 
       <div class="features-grid fade-up">
         <div class="feature-card">
           <div class="feature-icon">⚡</div>
-          <h3>AI DASHBOARD</h3>
-          <p>Multiple customisable themes with live speed, battery, power, regen, gear and more. Portrait and landscape
-            optimised.</p>
+          <h3>DASH</h3>
+          <p>Real-time driving data at a glance. Four dashboard packs — from Veltor's own cluster to layouts inspired
+            by Tesla, Mercedes and Audi — each with its own palette, gauges and layout.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🪟</div>
           <h3>HUD MODE</h3>
-          <p>Project your speed onto the windshield. Mirror mode, adjustable angle, 4 colour themes, and a minimal
-            large-speed view.</p>
+          <p>Project your speed onto the windshield. Mirror mode, adjustable angle, colour themes, and a Glass style
+            tuned to cut through windscreen glare.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🔊</div>
-          <h3>ENGINE SOUND</h3>
-          <p>Real-time crossfaded engine audio that responds to your speed and acceleration. Multiple sound packs
-            available.</p>
+          <h3>SOUND</h3>
+          <p>Procedurally synthesised engine audio that reacts to how you drive — floor it and it roars. 18 packs, from
+            V8 muscle to futuristic EV tones.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">🏆</div>
-          <h3>DRIVE COACH</h3>
-          <p>Live scoring for acceleration, braking, cornering and smoothness. Gamified challenges and post-trip
-            summaries.</p>
+          <div class="feature-icon">🚀</div>
+          <h3>LAUNCH</h3>
+          <p>An automatic 0-60 timer that catches your best runs the moment you floor it — no button to press, no run
+            to set up.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">🤖</div>
-          <h3>ADAPTIVE LAYOUT</h3>
-          <p>The dashboard intelligently switches layouts based on context — city, motorway, charging, night, and more.
-          </p>
+          <div class="feature-icon">📊</div>
+          <h3>STATS</h3>
+          <p>A running trip logbook — mileage, drives and efficiency — built from your car's own odometer, not a
+            guess.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🌐</div>
           <h3>UNIVERSAL</h3>
-          <p>Works on any vehicle via GPS and phone sensors. No OBD dongle required. Tesla gets full telemetry via the
-            Fleet API.</p>
+          <p>Works on any vehicle via GPS — no OBD dongle required. Tesla gets full telemetry over a direct Bluetooth
+            connection, no cloud, no Fleet API.</p>
         </div>
       </div>
     </div>
@@ -987,13 +1037,13 @@
       <div class="tesla-layout">
         <div class="fade-up">
           <p class="section-label">Tesla Integration</p>
-          <h2 class="section-title">Full telemetry.<br>No wires.</h2>
+          <h2 class="section-title">Full telemetry.<br>No cloud, no wires.</h2>
           <div class="tesla-badge">
             <span style="color:var(--blue)">●</span>
-            OAuth 2.0 + PKCE — your password is never seen by Veltor
+            Direct Bluetooth — a read-only key that can't unlock or drive your car
           </div>
           <ul class="telemetry-list">
-            <li>Real-time speed from vehicle (not GPS)</li>
+            <li>Real-time speed from the vehicle (not GPS)</li>
             <li>Battery percentage and state</li>
             <li>Power output and regeneration (kW)</li>
             <li>Gear — P R N D</li>
@@ -1048,7 +1098,7 @@
     <div class="container">
       <p class="section-label fade-up">Setup</p>
       <h2 class="section-title fade-up">Up and running<br>in under a minute.</h2>
-      <p class="section-sub fade-up">No hardware, no subscription, no pairing process. Just download and drive.</p>
+      <p class="section-sub fade-up">No hardware, no pairing process, free to start. Just download and drive.</p>
       <div class="steps fade-up">
         <div class="step">
           <h3>Download Veltor</h3>
@@ -1065,7 +1115,7 @@
         </div>
         <div class="step">
           <h3>Just drive</h3>
-          <p>Veltor does the rest. Live data, engine sounds, coaching scores — all automatic from the moment you move.
+          <p>Veltor does the rest. Live data, engine sound, launch timing — all automatic from the moment you move.
           </p>
         </div>
       </div>
@@ -1076,43 +1126,49 @@
   <section id="pricing" style="background:var(--surface);border-top:1px solid var(--border);">
     <div class="container" style="text-align:center;">
       <p class="section-label fade-up">Pricing</p>
-      <h2 class="section-title fade-up">Fair price.<br>Yours forever.</h2>
-      <p class="section-sub fade-up" style="margin:0 auto 48px;">No subscriptions. One purchase unlocks everything,
-        permanently.</p>
+      <h2 class="section-title fade-up">Start free.<br>Go all-in when ready.</h2>
+      <p class="section-sub fade-up" style="margin:0 auto 32px;">Veltor is free to drive with. Pro unlocks every
+        dashboard pack and every sound pack — no server, no account, entitlement handled entirely by the App Store /
+        Google Play.</p>
+
+      <div class="billing-toggle fade-up" role="tablist" aria-label="Billing period">
+        <button type="button" class="billing-opt active" data-period="monthly">Monthly</button>
+        <button type="button" class="billing-opt" data-period="yearly">Yearly <span class="save-tag">Save
+            66%</span></button>
+        <button type="button" class="billing-opt" data-period="lifetime">Lifetime</button>
+      </div>
+
       <div class="pricing-grid fade-up">
         <div class="pricing-card">
           <div class="plan-name">Free</div>
           <div class="plan-price">$0</div>
           <div class="plan-period">Always free</div>
           <ul class="plan-features">
-            <li>GPS Dashboard (Minimal theme)</li>
+            <li>Veltor dashboard pack</li>
             <li>HUD Mode</li>
             <li>1 Engine Sound Pack</li>
-            <li>Drive Coach</li>
-            <li class="muted">Tesla Integration</li>
-            <li class="muted">Premium Themes</li>
-            <li class="muted">All Sound Packs</li>
+            <li>Launch timer</li>
+            <li>Stats &amp; trip logbook</li>
+            <li class="muted">Tesla-, Mercedes- &amp; Audi-inspired packs</li>
+            <li class="muted">All 18 Sound Packs</li>
           </ul>
           <a href="#download" class="plan-btn outline">Download Free</a>
         </div>
         <div class="pricing-card featured">
           <div class="plan-name">Pro</div>
-          <div class="plan-price"><span>$</span>9.99</div>
-          <div class="plan-period">One-time purchase</div>
+          <div class="plan-price" id="planPrice"><span>$</span>4.99</div>
+          <div class="plan-period" id="planPeriod">per month</div>
           <ul class="plan-features">
             <li>Everything in Free</li>
-            <li>Tesla Full Integration</li>
-            <li>All Dashboard Themes</li>
-            <li>All Sound Packs</li>
-            <li>Advanced Analytics</li>
-            <li>No Ads</li>
-            <li>Future updates included</li>
+            <li>All 4 dashboard packs</li>
+            <li>All 18 sound packs</li>
+            <li>Early access to new packs</li>
           </ul>
-          <a href="#download" class="plan-btn filled">Unlock Forever</a>
+          <a href="#download" class="plan-btn filled">Go Pro</a>
         </div>
       </div>
-      <p style="color:var(--muted);font-size:12px;margin-top:24px;">Individual themes and sound packs also available
-        separately.</p>
+      <p style="color:var(--muted);font-size:12px;margin-top:24px;">Prices shown in USD. Same nominal price in GBP
+        and EUR. Cancel anytime — handled entirely by the App Store / Google Play.</p>
     </div>
   </section>
 
@@ -1149,7 +1205,7 @@
       </a>
       <div class="footer-links">
         <a href="privacy/index.html">Privacy Policy</a>
-        <a href="mailto:support@veltorapp.com">Support</a>
+        <a href="mailto:veltorapp@gmail.com">Support</a>
       </div>
       <div class="social-links">
         <a href="https://twitter.com/veltorapp" title="Twitter/X">𝕏</a>
@@ -1167,6 +1223,25 @@
       nav.classList.toggle('scrolled', window.scrollY > 40);
     });
 
+    // Pricing billing-period toggle
+    const PLAN_PRICES = {
+      monthly: { price: '<span>$</span>4.99', period: 'per month' },
+      yearly: { price: '<span>$</span>19.99', period: 'per year — save 66%' },
+      lifetime: { price: '<span>$</span>99.99', period: 'one-time — yours forever' },
+    };
+    const billingOpts = document.querySelectorAll('.billing-opt');
+    const planPrice = document.getElementById('planPrice');
+    const planPeriod = document.getElementById('planPeriod');
+    billingOpts.forEach(btn => {
+      btn.addEventListener('click', () => {
+        billingOpts.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const plan = PLAN_PRICES[btn.dataset.period];
+        planPrice.innerHTML = plan.price;
+        planPeriod.textContent = plan.period;
+      });
+    });
+
     // Fade-in on scroll
     const observer = new IntersectionObserver(
       entries => entries.forEach(e => {
@@ -1174,7 +1249,29 @@
       }),
       { threshold: 0.15 }
     );
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    const fadeEls = document.querySelectorAll('.fade-up');
+    fadeEls.forEach(el => observer.observe(el));
+
+    // Fallback: a direct jump (URL hash, fast wheel flick, reduced-motion
+    // skipping the smooth scroll) can land past a section without it ever
+    // intersecting the viewport, leaving it permanently at opacity 0.
+    function revealNearby() {
+      const margin = window.innerHeight;
+      fadeEls.forEach(el => {
+        if (el.classList.contains('visible')) return;
+        const r = el.getBoundingClientRect();
+        if (r.top < margin && r.bottom > -margin) el.classList.add('visible');
+      });
+    }
+    window.addEventListener('load', () => {
+      // The browser's own hash-jump can land after 'load' fires, so check
+      // again a couple of times shortly after in case this races it.
+      revealNearby();
+      setTimeout(revealNearby, 100);
+      setTimeout(revealNearby, 400);
+    });
+    window.addEventListener('hashchange', () => setTimeout(revealNearby, 50));
+    document.addEventListener('scroll', revealNearby, { passive: true });
   </script>
 
 </body>
