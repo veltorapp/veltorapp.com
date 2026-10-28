@@ -1,7 +1,6 @@
 [
   {
     "location": "/*",
-    "tdm-reservation": 1,
-    "tdm-policy": "https://veltorapp.com/legal/"
+    "tdm-reservation": 1
   }
 ]
