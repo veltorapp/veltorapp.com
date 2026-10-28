@@ -1,0 +1,35 @@
+# Veltor: see https://veltorapp.com/legal/ for copyright and AI use.
+# Search engines may index this site. AI crawlers and text and data
+# mining are not permitted.
+
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: OAI-SearchBot
+User-agent: ClaudeBot
+User-agent: Claude-User
+User-agent: Claude-SearchBot
+User-agent: Claude-Web
+User-agent: anthropic-ai
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: CCBot
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Bytespider
+User-agent: meta-externalagent
+User-agent: FacebookBot
+User-agent: Amazonbot
+User-agent: cohere-ai
+User-agent: cohere-training-data-crawler
+User-agent: Diffbot
+User-agent: YouBot
+User-agent: Timpibot
+User-agent: omgili
+User-agent: ImagesiftBot
+Disallow: /
+
+User-agent: *
+Disallow: /sound/w.js
+Disallow: /sound/p/
+Disallow: /sound/bangs/
+Allow: /
