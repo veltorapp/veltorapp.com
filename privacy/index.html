@@ -101,14 +101,14 @@
   <div class="meta">Last updated: 5 November 2026 &nbsp;·&nbsp; Effective immediately</div>
 
   <div class="highlight">
-    <p><strong>Short version:</strong> Veltor has no servers and no user accounts, and we never receive your data. Your VIN, your car's telemetry, your trips and your location stay on your phone. The one exception is advertising: the free GPS mode (&ldquo;Any other vehicle&rdquo;) shows a banner ad from Google AdMob, and Google collects some device data to serve it (section 5). Tesla mode never shows ads, and GPS Pro or Veltor Pro removes them.</p>
+    <p><strong>Short version:</strong> Veltor has no servers and no user accounts, and we never receive your data. Your VIN, your car's telemetry, your trips and your location stay on your phone. The one piece of location that leaves it is a drive's start and end position, sent to your phone's own place-name service, never to us (section 4). The one exception is advertising: the free GPS mode (&ldquo;Any other vehicle&rdquo;) shows a banner ad from Google AdMob, and Google collects some device data to serve it (section 5). Tesla mode never shows ads, and GPS Pro or Veltor Pro removes them.</p>
   </div>
 
   <h2>1. Who we are</h2>
   <p>Veltor ("we", "us", "our") is a mobile application developed and published by Veltor App. Contact: <a href="mailto:veltorapp@gmail.com">veltorapp@gmail.com</a></p>
 
   <h2>2. What stays on your phone</h2>
-  <p>Veltor is serverless and offline-first. We operate no cloud backend and have no user accounts, so nothing below is ever sent to us or to anyone else. It is processed <strong>entirely on your device</strong>:</p>
+  <p>Veltor is serverless and offline-first. We operate no cloud backend and have no user accounts, so nothing below is ever sent to us, and none of it goes anywhere else except the place-name lookup in section 4. It is processed <strong>entirely on your device</strong>:</p>
   <ul>
     <li>Your vehicle identification number (VIN), see section 3</li>
     <li>Live vehicle telemetry read from your car (speed, gear, motor power, battery, odometer)</li>
@@ -124,7 +124,7 @@
   <p>Veltor adds itself to your vehicle as a <strong>read-only key</strong>. It can read telemetry. It <em>cannot</em> unlock, start, drive, or send any command to your car. You can remove Veltor's key at any time from your car's touchscreen, under Locks.</p>
 
   <h2>4. Location data</h2>
-  <p>Veltor requests location permission to provide GPS-based speed when you are not connected to a Tesla, and for the HUD. Location is processed in real time on your device and is never uploaded by Veltor. If you allow background location, this only lets speed, and therefore the engine sound, keep working while the app is in the background.</p>
+  <p>Veltor requests location permission to provide GPS-based speed when you are not connected to a Tesla, for the HUD, and to find where a drive started and ended. Location is processed in real time on your device and is never sent to us; the only exception that leaves your phone is the place-name lookup below. If you allow background location, this only lets speed, and therefore the engine sound, keep working while the app is in the background.</p>
   <p>Veltor does not give your GPS location to its advertising partner. Google may infer an approximate location (for example, the city) from your internet connection's IP address when it serves an ad; see section 5.</p>
   <p><strong>Place names.</strong> To label where a drive started and ended, Veltor sends those two positions to the place-name service built into your phone (Apple's on iPhone, Google's on Android) and keeps the answer on your phone. We never receive the positions or the place names.</p>
 
