@@ -927,7 +927,7 @@
 
     .cards {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
       margin-top: 42px;
     }
@@ -939,6 +939,17 @@
       border: 1px solid var(--line);
       background: linear-gradient(180deg, var(--raised), var(--surface));
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card .tag {
+      align-self: flex-start;
+    }
+
+    .card ul {
+      flex: 1;
+      align-content: start;
     }
 
     .card h3 {
@@ -997,6 +1008,11 @@
     .card--pro .tag {
       background: rgba(255, 90, 40, .14);
       color: #ffb38a;
+    }
+
+    .card--gps .tag {
+      background: rgba(53, 224, 138, .12);
+      color: #7ef0b4;
     }
 
     .card__price {
@@ -1458,7 +1474,7 @@
           <h2>Set up once. <span class="heat">Then just drive.</span></h2>
           <ol class="steps" id="steps">
             <li><b>1</b><span><strong>Choose your car</strong>Tesla for full live data, or any other car for GPS
-                speed, engine sound and HUD.</span></li>
+                speed and engine sound.</span></li>
             <li><b>2</b><span><strong>Add Veltor as a key</strong>Hold your key card on the reader when the app
                 asks. The car approves it, not us.</span></li>
             <li><b>3</b><span><strong>You're paired</strong>Mount the phone and go. Nothing passes through a
@@ -1541,8 +1557,10 @@
       <div class="wrap">
         <span class="eyebrow">Free and Pro</span>
         <h2>Free to drive with. <span class="heat">Pro to make it yours.</span></h2>
-        <p class="lede">Pro is a single purchase through the App Store or Google Play. There's no subscription,
-          and the store shows the price in your currency.</p>
+        <p class="lede">With a Tesla, Veltor is free and shows no ads. Veltor Pro is monthly or yearly through
+          the App Store or Google Play, with a 7-day free trial on yearly for new subscribers, or one payment for life. Driving
+          something else? GPS mode is free with a small banner ad, and GPS Pro is one payment. The store shows
+          every price in your currency.</p>
         <div class="cards">
           <div class="card">
             <span class="tag">Free</span>
@@ -1551,13 +1569,14 @@
             <ul>
               <li>Live speed, power, battery and range from your Tesla</li>
               <li>Veltor's own dashboards</li>
-              <li>Engine sounds</li>
+              <li>Engine sounds, with two more earned after 7 and 30 days of driving</li>
               <li>Charging screen</li>
               <li>Every drive logged, with miles per day</li>
+              <li>No ads with a Tesla</li>
             </ul>
           </div>
           <div class="card card--pro">
-            <span class="tag">Pro · one payment</span>
+            <span class="tag">Pro · for your Tesla</span>
             <h3>Veltor Pro</h3>
             <p>For the numbers and the looks.</p>
             <ul>
@@ -1565,9 +1584,24 @@
               <li>Horsepower and every peak: power, regen, g</li>
               <li>The real 0–60 timer</li>
               <li>Real mi/kWh, energy cost, phantom drain and battery health</li>
-              <li>Restores to any device you sign in to</li>
+              <li>Every engine sound, and GPS Pro included</li>
+              <li>Restores on any phone signed in to the same store account</li>
             </ul>
-            <div class="card__price"><b>Lifetime</b>no subscription</div>
+            <div class="card__price"><b>Monthly, yearly or lifetime</b>7-day free trial on yearly</div>
+          </div>
+          <div class="card card--gps">
+            <span class="tag">GPS Pro · any car</span>
+            <h3>GPS Pro</h3>
+            <p>For GPS mode, in any car.</p>
+            <ul>
+              <li>Free GPS mode: GPS speed, the Veltor dashboard, four engine sounds and your drive log, with a
+                small banner ad</li>
+              <li>GPS Pro adds every GPS dashboard design</li>
+              <li>Every engine sound</li>
+              <li>The HUD, mirrored for your windscreen</li>
+              <li>No ads</li>
+            </ul>
+            <div class="card__price"><b>One payment</b>GPS mode only</div>
           </div>
         </div>
       </div>
@@ -1578,8 +1612,8 @@
       <div class="wrap">
         <span class="eyebrow">Launching soon</span>
         <h2>Put a dashboard <span class="heat">behind the wheel.</span></h2>
-        <p class="lede">Veltor is in testing with Tesla drivers now. Email us and we'll tell you the day it's
-          in the stores.</p>
+        <p class="lede">Veltor is on its way to the App Store and Google Play. Email us and we'll tell you the day
+          it's in the stores.</p>
         <div class="actions" style="justify-content:center">
           <a class="btn btn--primary"
             href="mailto:veltorapp@gmail.com?subject=Tell%20me%20when%20Veltor%20launches">Email me at launch</a>

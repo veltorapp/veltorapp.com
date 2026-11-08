@@ -1,5 +1,30 @@
 # Veltor website — handoff
 
+## 2026-11-08: pricing and support brought up to date with app build 138
+
+The live site still said "Pro is a single purchase … There's no subscription"
+(flagged in the marketing plan as a must-fix before campaign traffic). Build
+138 (`748a537`) sells Veltor Pro monthly / yearly (7-day free trial, new
+subscribers) / lifetime, plus GPS Pro as a one-time purchase for GPS mode.
+
+- **Homepage pricing** is now three cards: Free (Tesla, no ads, two sounds
+  earned at 7 and 30 days), Veltor Pro (monthly, yearly or lifetime; includes
+  GPS Pro and every sound), GPS Pro (free GPS mode = GPS speed, Veltor dash,
+  4 sounds, drive log, banner ad; GPS Pro adds every GPS dashboard design,
+  every sound, the HUD, no ads). Still **no prices** on the site: the store
+  shows them per currency (`docs/store_copy.md` rule), and no strikethroughs.
+  `.card` is now a flex column so the price rows sit at the card bottom.
+- Set-up step 1 no longer promises the HUD for "any other car" (it's GPS Pro).
+- Final CTA: "on its way to the App Store and Google Play" (was "in testing").
+  Store badges still SOON: swap for real links once both listings are live.
+- **Support page**: new "Veltor Pro and GPS Pro" section (what each is,
+  Restore = Settings → Veltor Pro / GPS Pro → Restore purchases, cancel in
+  the store); privacy blurb no longer says "collects nothing" (matches the
+  privacy page's AdMob section); GPS mode and the demo drive's real path
+  (Settings → Car & connection) added to Getting started.
+
+Checked at 1440px and 375px: no horizontal overflow, console clean.
+
 ## 2026-11-02 (pm, 2): charging — split content from the nav bar
 
 The real-crop fix from the prior round removed the correct amount of dead
