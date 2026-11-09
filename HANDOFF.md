@@ -1,5 +1,23 @@
 # Veltor website — handoff
 
+## 2026-11-09: audit fixes to the 11-08 pricing/support update
+
+- Support privacy line now names the one exception the privacy policy has (a
+  drive's start/end position goes to the phone's place-name service); it had
+  re-opened the mismatch `fb26544` fixed.
+- Cancelling: the app has a Manage subscription button (Tesla mode, on the
+  Veltor Pro paywall, `paywall_screen.dart`); links to the two store pages the
+  app opens; the 24-hour rule is Apple's only (Google has none).
+- "carmaker-style dashboards" → "every dashboard design" (store wording);
+  Free card "Veltor's own dashboards" → "The Veltor dashboard" (one free pack,
+  `ClusterPack.all = [veltor]`).
+- 900–1099px: cards go 2 + 1 (GPS Pro full width); price labels on their own
+  line. Checked at 375 / 960 / 1440, no overflow, console clean.
+- Still open (owner): the site describes build 138, so if Apple ships 137 the
+  GPS Pro card over-promises on iPhone; the yearly 7-day trial must exist in
+  both consoles. `/sound` says app sounds are free (true in Tesla mode only);
+  its source is in the veltor repo.
+
 ## 2026-11-08: pricing and support brought up to date with app build 138
 
 The live site still said "Pro is a single purchase … There's no subscription"

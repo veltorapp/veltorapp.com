@@ -1010,6 +1010,16 @@
       color: #ffb38a;
     }
 
+    @media (min-width: 900px) and (max-width: 1099px) {
+      .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .card--gps {
+        grid-column: 1 / -1;
+      }
+    }
+
     .card--gps .tag {
       background: rgba(53, 224, 138, .12);
       color: #7ef0b4;
@@ -1024,6 +1034,7 @@
     }
 
     .card__price b {
+      display: block;
       color: var(--text);
       font-family: 'Space Grotesk', sans-serif;
       font-size: 22px;
@@ -1568,7 +1579,7 @@
             <p>Everything you need on the road.</p>
             <ul>
               <li>Live speed, power, battery and range from your Tesla</li>
-              <li>Veltor's own dashboards</li>
+              <li>The Veltor dashboard</li>
               <li>Engine sounds, with two more earned after 7 and 30 days of driving</li>
               <li>Charging screen</li>
               <li>Every drive logged, with miles per day</li>
