@@ -1,5 +1,19 @@
 # Veltor website — handoff
 
+## 2026-11-09: Meet the team page (`/team/`, `e11837b`)
+
+- New page `team/index.html` in the homepage's look (Space Grotesk, same
+  tokens and footer), not on the landing page. Linked from the homepage
+  footer ("Team") and a line under Contact on `/support/`.
+- Ria Mano (Founder · CEO · Developer, BSc, MSc) and Dr Mano (Chief Marketing
+  Officer · Lead Tester, BTech, ME, PhD). Copy written up from the owner's
+  notes. Mano's "on two wheels" line, the tester-models line and the "help us
+  test" invite were filled in and are for the owner to confirm.
+- Photos: `assets/team/ria.webp` 640×800, `mano.webp` 510×638, 4:5 crops,
+  metadata stripped; Mano's crop keeps the BMW roundels out of frame.
+- Ria's text says Veltor is "on its way to the App Store and Google Play":
+  change it when the listings go live, along with the SOON badges.
+
 ## 2026-11-09: audit fixes to the 11-08 pricing/support update
 
 - Support privacy line now names the one exception the privacy policy has (a
