@@ -208,7 +208,7 @@
       border-radius: 7px;
     }
 
-    /* the speed chip: climbs 0 → 60 mph as you scroll the story */
+    /* the speed chip: climbs 0 → 100 mph as you scroll the page */
     .speedo {
       gap: 8px;
       padding: 0 16px 0 8px;
@@ -233,7 +233,7 @@
     .speedo b {
       font-size: 18px;
       font-weight: 700;
-      min-width: 2ch;
+      min-width: 3ch;
       text-align: right;
       font-variant-numeric: tabular-nums;
     }
@@ -1660,6 +1660,7 @@
         <a href="mailto:veltorapp@gmail.com">Contact</a>
         <a href="https://x.com/veltorapp" target="_blank" rel="noopener">X</a>
         <a href="https://instagram.com/veltorapp" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/VeltorAppOfficial/" target="_blank" rel="noopener">Facebook</a>
         <a href="https://youtube.com/@veltorapp" target="_blank" rel="noopener">YouTube</a>
       </nav>
       <p>© <span id="yr">2026</span> Veltor. Not affiliated with, or endorsed by, Tesla, Inc. Screens shown are
@@ -1760,17 +1761,24 @@
         return chapters[0].getBoundingClientRect().top > mid ? 0 : chapters.length;
       }
 
+      // nav speedo: 0 → 100 mph over the whole page, so it tops out
+      // exactly at the footer (not at the end of the story chapters)
+      function renderSpeedo() {
+        const max = document.documentElement.scrollHeight - innerHeight;
+        // the last scroll position can sit a pixel short of max: call it the top
+        const p = max <= 0 ? 0 : scrollY >= max - 2 ? 1 : clamp(scrollY / max);
+        const mph = Math.round(p * 100);
+        mphEl.textContent = mph;
+        arc.style.strokeDashoffset = 63 - 63 * mph / 100;
+        speedo.classList.toggle('is-max', mph >= 100);
+      }
+
       function render() {
+        renderSpeedo();
         const s = storyPos();
         if (Math.abs(s - last) < 0.0005) return;
         last = s;
         const ch = Math.min(6, Math.floor(s));
-
-        // nav speedo: 0 → 70 mph across the story, matching the tacho
-        const mph = Math.round(clamp((s - 0.5) / 6.1) * 70);
-        mphEl.textContent = mph;
-        arc.style.strokeDashoffset = 63 - 63 * mph / 70;
-        speedo.classList.toggle('is-max', mph >= 70);
 
         // chapter rail
         rail.classList.toggle('is-off', s < 0.85 || s >= 7);
