@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Meet the team — Veltor</title>
+  <meta name="description"
+    content="Veltor is built by a small, independent team of two: Ria Mano, founder and developer, and Dr Mano, marketing and testing.">
+  <meta name="theme-color" content="#05070a">
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/logo-icon.png">
+  <link rel="canonical" href="https://veltorapp.com/team/">
+  <meta property="og:title" content="Meet the team — Veltor">
+  <meta property="og:description" content="The two people who build and test Veltor.">
+  <meta property="og:image" content="https://veltorapp.com/assets/og.png">
+  <meta property="og:url" content="https://veltorapp.com/team/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@veltorapp">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #05070a;
+      --surface: #0b1017;
+      --line: rgba(255, 255, 255, 0.08);
+      --line-hi: rgba(53, 168, 255, 0.35);
+      --blue: #35a8ff;
+      --blue-glow: #6cc8ff;
+      --heat: linear-gradient(90deg, #2e86ff 0%, #8fd0ff 34%, #ffd117 70%, #ff2410 100%);
+      --text: #e9eef4;
+      --text-mid: #92a6ba;
+      --text-lo: #5d6c7e;
+      --pad: clamp(16px, 4vw, 40px);
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: clip;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1,
+    h2 {
+      font-family: 'Space Grotesk', 'Inter', sans-serif;
+      font-weight: 600;
+      letter-spacing: -0.025em;
+      line-height: 1.04;
+      text-wrap: balance;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .heat {
+      background: var(--heat);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .eyebrow {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 var(--pad);
+    }
+
+    /* ── nav ─────────────────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      inset: 14px var(--pad) auto;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      pointer-events: none;
+    }
+
+    .nav>* {
+      pointer-events: auto;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      height: 44px;
+      padding: 0 16px 0 10px;
+      border-radius: 999px;
+      background: rgba(10, 14, 20, .72);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .brand {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      letter-spacing: .18em;
+      font-size: 14px;
+    }
+
+    .brand img {
+      width: 26px;
+      height: 26px;
+      border-radius: 7px;
+    }
+
+    .pill--link {
+      padding: 0 18px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--text-mid);
+      transition: color .2s, border-color .2s;
+    }
+
+    .pill--link:hover {
+      color: var(--text);
+      border-color: var(--line-hi);
+    }
+
+    /* ── hero ────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      padding: clamp(120px, 18vh, 180px) 0 clamp(48px, 8vh, 80px);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0 0 auto;
+      height: 520px;
+      background: radial-gradient(60% 70% at 50% 0%, rgba(53, 168, 255, .16), transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero .wrap {
+      position: relative;
+      max-width: 820px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      margin: 18px 0 22px;
+      font-size: clamp(40px, 7vw, 76px);
+    }
+
+    .hero p {
+      max-width: 620px;
+      margin: 0 auto;
+      font-size: clamp(16px, 1.6vw, 19px);
+      color: var(--text-mid);
+    }
+
+    /* ── people ──────────────────────────────────────────────── */
+    .people {
+      display: grid;
+      gap: clamp(72px, 12vh, 128px);
+      padding-top: clamp(24px, 6vh, 56px);
+      padding-bottom: clamp(80px, 12vh, 140px);
+    }
+
+    .person {
+      display: grid;
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      gap: clamp(32px, 6vw, 80px);
+      align-items: start;
+    }
+
+    .person--flip .person__photo {
+      order: 2;
+    }
+
+    .person__photo {
+      position: sticky;
+      top: 96px;
+    }
+
+    .person__photo img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    /* the heat line under each portrait: the app's rev-band colours */
+    .person__photo::after {
+      content: '';
+      position: absolute;
+      left: 12%;
+      right: 12%;
+      bottom: -1px;
+      height: 3px;
+      border-radius: 3px;
+      background: var(--heat);
+      box-shadow: 0 0 24px rgba(255, 176, 32, .45);
+    }
+
+    .person h2 {
+      margin: 14px 0 6px;
+      font-size: clamp(34px, 4.6vw, 52px);
+    }
+
+    .creds {
+      font-size: 14px;
+      color: var(--text-lo);
+      letter-spacing: .04em;
+    }
+
+    .quote {
+      margin: 28px 0 28px;
+      padding-left: 20px;
+      border-left: 2px solid var(--line-hi);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(21px, 2.3vw, 27px);
+      font-weight: 500;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+
+    .person__body p {
+      font-size: 16px;
+      color: var(--text-mid);
+      margin-bottom: 16px;
+    }
+
+    .person__body p strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .jobs {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 26px;
+    }
+
+    .jobs li {
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, .03);
+      font-size: 13px;
+      color: var(--text-mid);
+    }
+
+    /* ── how we work ─────────────────────────────────────────── */
+    .band {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--surface);
+      padding: clamp(56px, 9vh, 96px) 0;
+    }
+
+    .band h2 {
+      font-size: clamp(28px, 3.6vw, 40px);
+      margin: 14px 0 40px;
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .fact {
+      padding: 26px 24px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, .02);
+    }
+
+    .fact b {
+      display: block;
+      margin-bottom: 8px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .fact p {
+      font-size: 15px;
+      color: var(--text-mid);
+    }
+
+    /* ── close ───────────────────────────────────────────────── */
+    .close {
+      padding: clamp(72px, 12vh, 128px) 0;
+      text-align: center;
+    }
+
+    .close h2 {
+      font-size: clamp(32px, 5vw, 56px);
+      margin-bottom: 18px;
+    }
+
+    .close p {
+      max-width: 560px;
+      margin: 0 auto 32px;
+      color: var(--text-mid);
+      font-size: 17px;
+    }
+
+    .ctas {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      height: 50px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      transition: transform .2s var(--ease), background .2s, border-color .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn--primary {
+      background: var(--blue);
+      color: #031020;
+      box-shadow: 0 10px 40px -10px rgba(53, 168, 255, .7);
+    }
+
+    .btn--ghost {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, .03);
+    }
+
+    .btn--ghost:hover {
+      border-color: var(--line-hi);
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 40px var(--pad) 90px;
+      color: var(--text-lo);
+      font-size: 13px;
+    }
+
+    footer .wrap {
+      max-width: 1180px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px 28px;
+      justify-content: space-between;
+    }
+
+    footer nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 20px;
+      color: var(--text-mid);
+    }
+
+    footer nav a[aria-current] {
+      color: var(--text);
+    }
+
+    footer p {
+      flex-basis: 100%;
+    }
+
+    @media (max-width: 899px) {
+      .facts {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 799px) {
+      .person {
+        grid-template-columns: 1fr;
+      }
+
+      .person--flip .person__photo {
+        order: 0;
+      }
+
+      .person__photo {
+        position: relative;
+        top: auto;
+        width: min(100%, 340px);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .btn {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="nav">
+    <a class="pill brand" href="/"><img src="/assets/logo-icon.png" alt="">VELTOR</a>
+    <a class="pill pill--link" href="/">Home</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="eyebrow">The team</div>
+        <h1>Two people, <span class="heat">one obsession.</span></h1>
+        <p>Veltor is built by a small, independent team. We design it, write it and test it on our own drives,
+          and when you email us, one of us writes back.</p>
+      </div>
+    </section>
+
+    <section class="wrap people" aria-label="Team members">
+
+      <article class="person">
+        <div class="person__photo">
+          <img src="/assets/team/ria.webp" width="640" height="800" alt="Ria Mano, founder of Veltor">
+        </div>
+        <div class="person__body">
+          <div class="eyebrow">Founder · CEO · Developer</div>
+          <h2>Ria Mano</h2>
+          <div class="creds">BSc, MSc</div>
+          <blockquote class="quote">“Tesla gave the car its technology. I wanted to give it a soul.”</blockquote>
+          <p>I've always admired Tesla for the engineering: the instant torque, and software that keeps getting
+            better while the car sits on the drive. But the more I drove one, the more I felt something was
+            missing. A car this quick should sound like it, and it should show you what it's doing.</p>
+          <p><strong>Veltor is my answer.</strong> It reads your Tesla live over Bluetooth, as a read-only key,
+            and turns what it hears into an engine note that rises and falls with the way you drive, and a
+            dashboard worth looking at. It's the last piece of the puzzle I wanted for my own car.</p>
+          <p>Getting here took more sleepless nights than I can count, and I hold myself to one rule: I don't
+            release anything I wouldn't use myself. I use Veltor every single day, and it's now on its way to
+            the App Store and Google Play.</p>
+          <p>Our goal is to put Veltor in front of every Tesla owner who'd enjoy it, listen to what they tell us,
+            and keep making it better. Give it a try. I think you'll love it, and if there's anything you'd
+            change, I want to hear it.</p>
+          <ul class="jobs" aria-label="What Ria does">
+            <li>Builds the app</li>
+            <li>Engine sound and dashboards</li>
+            <li>Runs the company</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="person person--flip">
+        <div class="person__photo">
+          <img src="/assets/team/mano.webp" width="510" height="638" alt="Dr Mano, Veltor's marketing lead and tester"
+            loading="lazy">
+        </div>
+        <div class="person__body">
+          <div class="eyebrow">Chief Marketing Officer · Lead Tester</div>
+          <h2>Dr Mano</h2>
+          <div class="creds">BTech, ME, PhD</div>
+          <blockquote class="quote">“If it isn't right on my commute, it isn't ready for yours.”</blockquote>
+          <p>I have two jobs at Veltor: finding the drivers who help shape the app, and making sure every build
+            is right before it reaches them.</p>
+          <p><strong>I recruited our beta testers</strong> from Tesla owners' groups on Facebook: real drivers,
+            on iPhone and Android, across different Tesla models. The logs and feedback they send have shaped
+            nearly every release, from how reliably the app connects to how the dashboards read at a glance.</p>
+          <p>Every test build comes with me on my commute, to work and home again, every day. If the sound drops
+            out, a number reads wrong or the connection hesitates, I want to find it before you do.</p>
+          <p>Off the clock I'm usually on two wheels, so I know how much a good engine note matters. If you'd like
+            to help test Veltor, or you run a Tesla owners' group, I'd love to hear from you.</p>
+          <ul class="jobs" aria-label="What Mano does">
+            <li>Tests every build</li>
+            <li>Beta tester community</li>
+            <li>Marketing</li>
+          </ul>
+        </div>
+      </article>
+
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+        <div class="eyebrow">How we work</div>
+        <h2>Small team, short distance to the people who build it.</h2>
+        <div class="facts">
+          <div class="fact">
+            <b>Built by us</b>
+            <p>Every screen, sound and line of code is designed and written by the two of us.</p>
+          </div>
+          <div class="fact">
+            <b>Tested on real roads</b>
+            <p>Each build goes out on our own drives and to our beta testers before it goes anywhere else.</p>
+          </div>
+          <div class="fact">
+            <b>We read every email</b>
+            <p>Feedback reaches the people who can act on it, and several of Veltor's features started
+              as a tester's suggestion.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="close">
+      <div class="wrap">
+        <h2>Tell us what you think.</h2>
+        <p>An idea, a bug, or a car you'd like Veltor to support: write to us and you'll hear back from Ria or
+          Mano.</p>
+        <div class="ctas">
+          <a class="btn btn--primary" href="mailto:veltorapp@gmail.com">Email the team</a>
+          <a class="btn btn--ghost" href="/">See what Veltor does</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <a class="brand" href="/">VELTOR</a>
+      <nav>
+        <a href="/team/" aria-current="page">Team</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/support/">Support</a>
+        <a href="/sound/">Sound</a>
+        <a href="mailto:veltorapp@gmail.com">Contact</a>
+        <a href="https://x.com/veltorapp" target="_blank" rel="noopener">X</a>
+        <a href="https://instagram.com/veltorapp" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://youtube.com/@veltorapp" target="_blank" rel="noopener">YouTube</a>
+      </nav>
+      <p>© <span id="yr">2026</span> Veltor. Not affiliated with, or endorsed by, Tesla, Inc.</p>
+    </div>
+  </footer>
+
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+
+</html>
