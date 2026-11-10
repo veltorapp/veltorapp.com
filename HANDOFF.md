@@ -1,5 +1,19 @@
 # Veltor website — handoff
 
+## 2026-11-10: Google Play listing is live
+
+- App approved on Google Play:
+  https://play.google.com/store/apps/details?id=com.veltorapp.veltor
+- Homepage: hero primary button is now "Get it on Google Play" (was "Get
+  launch updates" → #get). Final section eyebrow "Out now on Android", lede
+  says Play now / iPhone on its way; buttons = Google Play, "Email me for
+  iPhone" (mailto), Try the sounds. Google Play store chip is a link with a
+  green AVAILABLE tag (`.store--live`); App Store chip still SOON.
+- Team page: Ria's line now says out on Google Play, iPhone on its way.
+- Links page: "Get it on Google Play" button under veltorapp.com.
+- When the App Store listing goes live: App Store chip → link, drop the
+  iPhone mailto, update the lede and the team line again.
+
 ## 2026-11-09: Meet the team page (`/team/`, `e11837b`)
 
 - New page `team/index.html` in the homepage's look (Space Grotesk, same
