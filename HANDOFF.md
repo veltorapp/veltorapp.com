@@ -11,6 +11,12 @@
   green AVAILABLE tag (`.store--live`); App Store chip still SOON.
 - Team page: Ria's line now says out on Google Play, iPhone on its way.
 - Links page: "Get it on Google Play" button under veltorapp.com.
+- Play links carry an install referrer (`&referrer=utm_source%3Dwebsite%26utm_medium%3D…`,
+  medium = `hero` / `final` / `store_chip` / `links`) so Play Console's store
+  listing acquisition report shows installs from the site, per button.
+- Analytics: owner chose Cloudflare Web Analytics (cookieless, no banner) over
+  GA4. Waiting on the site token from the Cloudflare dashboard; then the beacon
+  goes in every page's <head> and the privacy page gets a website line.
 - When the App Store listing goes live: App Store chip → link, drop the
   iPhone mailto, update the lede and the team line again.
 
